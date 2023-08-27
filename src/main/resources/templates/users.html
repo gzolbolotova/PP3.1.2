@@ -47,6 +47,7 @@
             border-radius: 2px;
             margin-right: 5px;
         }
+
         .button {
             text-align: center;
             margin-top: 15px;
@@ -66,11 +67,11 @@
     </tr>
     </thead>
     <tbody>
-        <tr th:each="user : ${users}">
-            <td ><a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getId()}" class="button-each">user</a></td>
-            <td th:text="${user.getName()}">user</td>
-            <td th:text="${user.getLastname()}">user</td>
-            <td th:text="${user.getEmail()}">user</td>
+    <tr th:each="user : ${users}">
+        <td><a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getId()}" class="button-each">user</a></td>
+        <td th:text="${user.getName()}">user</td>
+        <td th:text="${user.getLastname()}">user</td>
+        <td th:text="${user.getEmail()}">user</td>
     </tr>
     </tbody>
 </table>

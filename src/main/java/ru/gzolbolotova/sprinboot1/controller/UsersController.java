@@ -13,47 +13,50 @@ import ru.gzolbolotova.sprinboot1.service.UserService;
 public class UsersController {
 
     private final UserService userService;
+
     @Autowired
     public UsersController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping()
-    public String users(Model model){
+    public String users(Model model) {
         model.addAttribute("users", userService.getUsers());
         return "users";
     }
+
     @GetMapping("/{id}")
-    public String show(@PathVariable("id") long id, Model model){
+    public String show(@PathVariable long id, Model model) {
         model.addAttribute("user", userService.showUser(id));
         return "show";
     }
 
     @GetMapping("/new")
-    public String newUser(Model model){
+    public String newUser(Model model) {
         model.addAttribute("user", new User());
         return "new";
     }
+
     @PostMapping()
-    public String create(@ModelAttribute("user") User user){
+    public String create(@ModelAttribute User user) {
         userService.saveUser(user);
         return "redirect:/users";
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") long id){
+    public String edit(Model model, @PathVariable long id) {
         model.addAttribute("user", userService.showUser(id));
         return "edit";
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("user") User user){
+    public String update(@ModelAttribute User user) {
         userService.updateUser(user);
         return "redirect:/users";
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") long id){
+    public String delete(@PathVariable long id) {
         userService.deleteUser(id);
         return "redirect:/users";
     }
