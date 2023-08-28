@@ -1,6 +1,6 @@
 package ru.gzolbolotova.sprinboot1.service;
 
-import org.springframework.stereotype.Service;
+
 import ru.gzolbolotova.sprinboot1.model.User;
 
 
